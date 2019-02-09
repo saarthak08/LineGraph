@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#dfb6b6"
+    android:background="#e7d681"
     tools:context=".MainActivity"
     tools:layout_editor_absoluteY="81dp">
 
@@ -12,15 +12,16 @@
         android:id="@+id/frame_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/textView">
+        android:layout_above="@+id/linearlayout">
 
     </FrameLayout>
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:layout_above="@+id/button"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
         android:layout_gravity="bottom"
         android:background="#b4a183"
         android:paddingStart="8dp"
@@ -29,17 +30,72 @@
         android:textSize="14sp"
         android:textStyle="bold"
         app:fontFamily="casual"
-        tools:ignore="RtlHardcoded,RtlSymmetry" />
+        tools:ignore="RtlHardcoded,RtlSymmetry"
+        android:layout_alignParentLeft="true" />
 
-    <Button
-        android:id="@+id/button"
+    <LinearLayout
+        android:id="@+id/linearlayout"
+        android:layout_above="@+id/textView"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_alignParentBottom="true"
-        android:background="@android:color/holo_blue_dark"
-        android:fadingEdge="horizontal|vertical"
-        android:foreground="?attr/selectableItemBackground"
-        android:requiresFadingEdge="horizontal|vertical"
-        android:text="@string/button" />
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        tools:ignore="DisableBaselineAlignment">
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInput1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/editText1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="a" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInput2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/editText2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="b" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInput3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/editText3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="c" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/textInput4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <android.support.design.widget.TextInputEditText
+                android:id="@+id/editText4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignStart="@+id/textInput1"
+                android:layout_alignLeft="@+id/textInput1"
+                android:layout_alignTop="@+id/textInput1"
+                android:hint="d" />
+        </android.support.design.widget.TextInputLayout>
+    </LinearLayout>
+
 
 </RelativeLayout>
