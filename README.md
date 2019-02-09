@@ -1,5 +1,5 @@
 # LineGraph
-# This is the development branch of the project. All beta changes are made here which on testing are merged to the master branch.
+# This is the development branch of the project. All beta changes are made here.The commits which are final, are passed on to 'pull_request' branch for merging to the master branch.
    An android app for displaying a graph of a function f(ct+d) with Y axis as the f(ct+d) & X-axis as 't'.
     
    
