@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">LineGraph</string>
     <string name="button">Change Values</string>
-    <string name="text">f(ct+d)=  (x/a)+1  \t\t\t(when x is less than 0)\n\t\t\t\t\t\t= \'1\'\t  (when x >0 &amp; x is less than or equal to b)\n\t\t\t\t\t\t= \'0\'\t  (else)\n\na=1,\t\t\t\t\t\t\t\t\t\tb=1,\t\t\t\t\t\t\t\t\t\tc=1,\t\t\t\t\t\t\t\t\t\td=1</string>
+    <string name="text">f(ct+d)=  (x/a)+1  \t\t\t(when x is less than 0)\n\t\t\t\t\t\t= \'1\'\t  (when x >0 &amp; x is less than or = to b)\n\t\t\t\t\t\t= \'0\'\t  (else)</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
