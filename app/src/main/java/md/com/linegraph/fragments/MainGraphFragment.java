@@ -2,16 +2,22 @@ package md.com.linegraph.fragments;
 
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
 
+import com.afollestad.materialdialogs.DialogAction;
+import com.afollestad.materialdialogs.MaterialDialog;
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.GridLabelRenderer;
-import com.jjoe64.graphview.LegendRenderer;
-import com.jjoe64.graphview.Viewport;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
@@ -75,18 +81,27 @@ public class MainGraphFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        Button button=getActivity().findViewById(R.id.button);
+        Button button2=getActivity().findViewById(R.id.button2);
+        Button button3=getActivity().findViewById(R.id.button3);
+        Button button4=getActivity().findViewById(R.id.button4);
         GraphView graph = (GraphView) getActivity().findViewById(R.id.graph);
-        MainActivity.set(1,1,1,1);
+        double a1,a2,b1,b2,c1,c2,d1,d2;
+        a2=0;b2=1;c2=1;d2=0;
         LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
-                new DataPoint(-MainActivity.a, 0),
-                new DataPoint(0, 1),
-                new DataPoint(MainActivity.b, 1),
-                new DataPoint(MainActivity.b,0)
+                new DataPoint(-(((MainActivity.a/MainActivity.c))+MainActivity.d), a2),
+                new DataPoint((0/MainActivity.c)-MainActivity.d, b2),
+                new DataPoint((MainActivity.b/MainActivity.c)-MainActivity.d, c2),
+                new DataPoint((MainActivity.b/MainActivity.c)-MainActivity.d,d2)
 
         });
-        graph.getViewport().setMinX(-((MainActivity.a)+1));
+        button.setText("a = -"+ ((MainActivity.a/MainActivity.c)+MainActivity.d));
+        button2.setText("b = "+ ((MainActivity.b/MainActivity.c)-MainActivity.d));
+        button3.setText("c = "+ MainActivity.c);
+        button4.setText("d = "+ MainActivity.d);
+        graph.getViewport().setMinX(-((MainActivity.a/MainActivity.c)+MainActivity.d+1));
         graph.getGridLabelRenderer().setHumanRounding(false);
-        graph.getViewport().setMaxX((MainActivity.b)+1);
+        graph.getViewport().setMaxX((MainActivity.b/MainActivity.c)-MainActivity.d+1);
         graph.getViewport().setMinY(-2);
         graph.getViewport().setMaxY(2);
         graph.getGridLabelRenderer().setHorizontalAxisTitle("t");
@@ -99,11 +114,8 @@ public class MainGraphFragment extends Fragment {
         graph.getViewport().setXAxisBoundsManual(true);
         series.setAnimated(true);
         series.setDrawDataPoints(true);
-
-
         graph.addSeries(series);
-
-
         series.setTitle("Line Graph");
+
     }
 }
