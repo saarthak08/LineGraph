@@ -2,10 +2,14 @@ package md.com.linegraph;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
@@ -14,8 +18,6 @@ import md.com.linegraph.fragments.MainGraphFragment;
 
 public class MainActivity extends AppCompatActivity {
     public static double a,b,c,d;
-    public static double x,y,ay,bya,byb;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,22 +29,22 @@ public class MainActivity extends AppCompatActivity {
         Button button4=findViewById(R.id.button4);
         set(1,1,1,0);
         button.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("ResourceType")
             @Override
             public void onClick(View v) {
-                new MaterialDialog.Builder(MainActivity.this).title("Value of a").input("", ""+a, false, new MaterialDialog.InputCallback() {
+                new MaterialDialog.Builder(MainActivity.this).title("Value of a").input("", ""+((a/c)+d), false, new MaterialDialog.InputCallback() {
                     @Override
                     public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
                         set((Double.parseDouble(String.valueOf(input))),MainActivity.b,MainActivity.c,MainActivity.d);
-                        Toast.makeText(MainActivity.this,""+MainActivity.a,Toast.LENGTH_SHORT).show();
                         getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout,new MainGraphFragment()).commit();
                     }
-                }).inputRange(1,3).inputType(InputType.TYPE_NUMBER_FLAG_DECIMAL).canceledOnTouchOutside(true).show();
+                }).inputRange(1,3).inputType(InputType.TYPE_NUMBER_FLAG_DECIMAL).canceledOnTouchOutside(true).checkBoxPrompt("Negative Value",true,null).show();
             }
         });
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new MaterialDialog.Builder(MainActivity.this).title("Value of b").input("", ""+b, false, new MaterialDialog.InputCallback() {
+                new MaterialDialog.Builder(MainActivity.this).title("Value of b").input("", ""+((b/c)-d), false, new MaterialDialog.InputCallback() {
                     @Override
                     public void onInput(@NonNull MaterialDialog dialog, CharSequence input) {
                         set(MainActivity.a,(Double.parseDouble(String.valueOf(input))),MainActivity.c,MainActivity.d);
