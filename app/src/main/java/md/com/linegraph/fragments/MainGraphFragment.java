@@ -88,13 +88,18 @@ public class MainGraphFragment extends Fragment {
         GraphView graph = (GraphView) getActivity().findViewById(R.id.graph);
         double a1,a2,b1,b2,c1,c2,d1,d2;
         a2=0;b2=1;c2=1;d2=0;
-        LineGraphSeries<DataPoint> series = new LineGraphSeries<>(new DataPoint[] {
-                new DataPoint(-(((MainActivity.a/MainActivity.c))+MainActivity.d), a2),
-                new DataPoint((0/MainActivity.c)-MainActivity.d, b2),
-                new DataPoint((MainActivity.b/MainActivity.c)-MainActivity.d, c2),
-                new DataPoint((MainActivity.b/MainActivity.c)-MainActivity.d,d2)
+        a1=-MainActivity.a;
+        b1=MainActivity.b;
+        c1=MainActivity.c;
+        d1=MainActivity.d;
+        LineGraphSeries<DataPoint> series;
+            series = new LineGraphSeries<>(new DataPoint[]{
+                    new DataPoint((a1 / c1) - d1, a2),
+                    new DataPoint((0 / c1) - d1, b2),
+                    new DataPoint((b1 / c1) - d1, c2),
+                    new DataPoint((b1 / c1) - d1, d2)
 
-        });
+            });
         button.setText("a = -"+ ((MainActivity.a/MainActivity.c)+MainActivity.d));
         button2.setText("b = "+ ((MainActivity.b/MainActivity.c)-MainActivity.d));
         button3.setText("c = "+ MainActivity.c);
